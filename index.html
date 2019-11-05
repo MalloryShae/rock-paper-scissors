@@ -6,6 +6,13 @@
 <body>
   <script>
 
+<!-- Computer randomly selects one "Rock, Paper, or Scissors" -->
+
+    function computerPlay(){
+      let choices = ["rock", "paper", "scissors"];
+      let choice = choices[Math.floor(Math.random() * choices.length)]
+      return choice;
+    }
 
 
 
