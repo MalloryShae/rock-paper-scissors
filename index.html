@@ -6,23 +6,28 @@
 <body>
   <script>
 
-<!-- Computer randomly selects one "Rock, Paper, or Scissors" -->
-
     function computerPlay(){
       let choices = ["rock", "paper", "scissors"];
       let choice = choices[Math.floor(Math.random() * choices.length)]
       return choice;
     }
 
+    let computerSelection = computerPlay();
 
-
-
-
-
-
-
-
-
+    function playRound (playerSelection, computerSelection){
+      let winning = "You win! "+playerSelection+ " beats " +computerSelection+"!";
+      let losing = "You lose! " +playerSelection + " beats " + computerSelection +"!";
+      let tie = "It's a tie!"
+      if ((playerSelection.toLowerCase() === "rock" && computerSelection === "scissors") ||
+          (playerSelection.toLowerCase() === "scissors" && computerSelection === "paper") ||
+          (playerSelection.toLowerCase() === "paper" && computerSelection === "rock")){
+        return winning;
+      } else if (playerSelection.toLowerCase() === computerSelection){
+        return tie;
+      } else {
+        return losing;
+      }
+    }
 
 
   </script>
