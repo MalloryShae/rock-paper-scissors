@@ -5,8 +5,6 @@
       return choice;
     }
 
-
-
    let playRound = function(playerSelection, computerSelection){
       let winning = "You win! "+playerSelection+ " beats " +computerSelection+"!";
       let losing = "You lose! " + computerSelection + " beats "+playerSelection + "!";
@@ -25,6 +23,7 @@
       }
     }
 
+
     function game(){
       let rounds = 0
       for (var i = 0; i < 5; i++){
@@ -32,6 +31,7 @@
         let playerSelection = prompt("Rock, Paper, or Scissors?")
         playRound(playerSelection, computerSelection);
         rounds = rounds + 1;
-        console.log(rounds);
       }
       }
+// Need to add way to keep score and then console.log the score at the end declaring a final winner
+// Need to format the winning and losing messages as well
