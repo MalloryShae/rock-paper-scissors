@@ -1,3 +1,11 @@
+function capitalize(string){
+  let lower = string.toLowerCase();
+  let first = lower.slice(0,1);
+  let upper = first.toUpperCase();
+  let rest = lower.slice(1);
+  let caps = upper+rest;
+  return caps;
+}
 
     function computerPlay(){
       let choices = ["rock", "paper", "scissors"];
@@ -10,16 +18,18 @@
     let tieScore = 0
 
    let playRound = function(playerSelection, computerSelection){
-      let winning = "You win! "+playerSelection+ " beats " +computerSelection+"!";
-      let losing = "You lose! " + computerSelection + " beats "+playerSelection + "!";
+      let playerCaps = capitalize(playerSelection);
+      let computerCaps = capitalize(computerSelection);
+      let winning = "You win! "+playerCaps+ " beats " +computerSelection+"!";
+      let losing = "You lose! " + computerCaps + " beats "+ playerSelection + "!";
       let tie = "It's a tie!"
-      if ((playerSelection.toLowerCase() === "rock" && computerSelection === "scissors") ||
-          (playerSelection.toLowerCase() === "scissors" && computerSelection === "paper") ||
-          (playerSelection.toLowerCase() === "paper" && computerSelection === "rock")){
+      if ((playerSelection === "rock" && computerSelection === "scissors") ||
+          (playerSelection  === "scissors" && computerSelection === "paper") ||
+          (playerSelection === "paper" && computerSelection === "rock")){
         playerScore = playerScore + 1;
         console.log(winning);
         return winning;
-      } else if (playerSelection.toLowerCase() === computerSelection){
+      } else if (playerSelection  === computerSelection){
         tieScore = tieScore +1;
         console.log(tie);
         return tie;
@@ -35,7 +45,7 @@
       let rounds = 0
       for (var i = 0; i < 5; i++){
         let computerSelection = computerPlay();
-        let playerSelection = prompt("Rock, Paper, or Scissors?")
+        let playerSelection = prompt("Rock, Paper, or Scissors?").toLowerCase()
         playRound(playerSelection, computerSelection);
         rounds = rounds + 1;
         let scoreDisplay = "Player Wins: " + playerScore + " | Computer Wins: " +computerScore+ " | Ties: " + tieScore;
@@ -49,5 +59,5 @@
         alert("It's a tie!")
       }
       }
-// Need to add way to keep score and then console.log the score at the end declaring a final winner
-// Need to format the winning and losing messages as well
+
+game()
