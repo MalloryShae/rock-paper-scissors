@@ -52,11 +52,11 @@ function capitalize(string){
         console.log(scoreDisplay);
       }
       if ((rounds === 5) && (playerScore > computerScore) && (playerScore > tieScore)){
-        alert("Player Wins!")
+        console.log("Player Wins!")
       } else if ((rounds === 5) && (computerScore > playerScore) && (computerScore > tieScore)){
-        alert("Computer Wins!")
+        console.log("Computer Wins!")
       }else{
-        alert("It's a tie!")
+        console.log("It's a tie!")
       }
       }
 
