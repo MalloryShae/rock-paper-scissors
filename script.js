@@ -54,29 +54,21 @@ buttons.forEach((button) => {
     scoreDisplay.textContent = "Player Wins: " + playerScore + " | Computer Wins: " +computerScore+ " | Ties: " + tieScore;
     document.querySelector('.playerOptions').appendChild(roundDisplay);
     document.querySelector('.playerOptions').appendChild(scoreDisplay);
-    rounds ++;
-    if (rounds === 5){
+    if (playerScore === 5 || computerScore === 5){
       buttons.forEach((button) => {button.disabled = true});
-      setTimeout(finalScore, 1000);
+      setTimeout(finalScore, 1500);
     };
   });
 });
 
 
-
-
-
-// Need to: store round info somewhere - number of rounds, who has wins, loses, draws ; display on page (not console), see if I can cap rounds, Make page look better
-
 function finalScore (){
   document.querySelector('.playerOptions').removeChild(roundDisplay);
   document.querySelector('.playerOptions').appendChild(finalDisplay);
   if ((playerScore > computerScore) && (playerScore > tieScore)){
-    finalDisplay.textContent = "Player Wins best out of 5!"
+    finalDisplay.textContent = "Player Wins!"
   } else if ((computerScore > playerScore) && (computerScore > tieScore)){
-    finalDisplay.textContent = "Computer Wins best out of 5!"
-  }else{
-    finalDisplay.textContent = "It's a tie! Nobody wins best out of 5"
+    finalDisplay.textContent = "Computer Wins!"
   }
 }
 
