@@ -40,12 +40,15 @@ let playRound = function(playerSelection, computerSelection){
 }
 
 let playerSelection = "";
+let winner ="";
 
 const buttons = document.querySelectorAll('button');
 const scoreDisplay = document.createElement('p');
 const roundDisplay = document.createElement('p');
 const finalDisplay = document.createElement('p');
 const selectText = document.querySelector('.select');
+
+
 
 buttons.forEach((button) => {
   button.addEventListener('click', (e) => {
@@ -58,23 +61,53 @@ buttons.forEach((button) => {
     if (playerScore === 5 || computerScore === 5){
       buttons.forEach((button) => {button.style.display = 'none'});
       selectText.style.display = 'none';
-      setTimeout(finalScore, 500);
+      setTimeout(finalScore(), 500);
     };
   });
 });
 
 
 function finalScore (){
-  if ((playerScore > computerScore) && (playerScore > tieScore)){
-    if (confirm("Player Wins!")){
-      window.location.reload()
-    }
-  } else if ((computerScore > playerScore) && (computerScore > tieScore)){
-    if(confirm("Computer Wins!")){
-      window.location.reload();
-    }
-  }
-}
+  if (playerScore > computerScore){
+    winner = "You win!";
+  } else if (computerScore > playerScore){
+    winner = "You lose!";
+  };
+  if (confirm(winner)){
+    window.location.reload();
+  };
+};
+
+ // currently abandoned attempt at custom dialog dialogBox
+// function CustomConfirm(){
+// 	this.render = function(dialog,op,id){
+// 		var winW = window.innerWidth;
+// 	    var winH = window.innerHeight;
+// 		var dialogoverlay = document.getElementById('dialogoverlay');
+// 	    var dialogbox = document.getElementById('dialogbox');
+// 		dialogoverlay.style.display = "block";
+// 	    dialogoverlay.style.height = winH+"px";
+// 		dialogbox.style.left = (winW/2) - (550 * .5)+"px";
+// 	    dialogbox.style.top = "100px";
+// 	    dialogbox.style.display = "block";
+//
+// 		document.getElementById('dialogboxhead').innerHTML = "Confirm that action";
+// 	    document.getElementById('dialogboxbody').innerHTML = dialog;
+// 		document.getElementById('dialogboxfoot').innerHTML = '<button onclick="Confirm.yes(\''+op+'\',\''+id+'\')">Yes</button> <button onclick="Confirm.no()">No</button>';
+// 	}
+// 	this.no = function(){
+// 		document.getElementById('dialogbox').style.display = "none";
+// 		document.getElementById('dialogoverlay').style.display = "none";
+// 	}
+// 	this.yes = function(op,id){
+// 		if(op == "delete_post"){
+// 			deletePost(id);
+// 		}
+// 		document.getElementById('dialogbox').style.display = "none";
+// 		document.getElementById('dialogoverlay').style.display = "none";
+// 	}
+// }
+// var Confirm = new CustomConfirm();
 
 // // function game(){
 // //   let rounds = 0
