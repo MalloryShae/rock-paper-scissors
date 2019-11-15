@@ -45,6 +45,7 @@ const buttons = document.querySelectorAll('button');
 const scoreDisplay = document.createElement('p');
 const roundDisplay = document.createElement('p');
 const finalDisplay = document.createElement('p');
+const selectText = document.querySelector('.select');
 
 buttons.forEach((button) => {
   button.addEventListener('click', (e) => {
@@ -55,7 +56,8 @@ buttons.forEach((button) => {
     document.querySelector('.playerOptions').appendChild(roundDisplay);
     document.querySelector('.playerOptions').appendChild(scoreDisplay);
     if (playerScore === 5 || computerScore === 5){
-      buttons.forEach((button) => {button.disabled = true});
+      buttons.forEach((button) => {button.style.display = 'none'});
+      selectText.style.display = 'none';
       setTimeout(finalScore, 1500);
     };
   });
@@ -63,8 +65,7 @@ buttons.forEach((button) => {
 
 
 function finalScore (){
-  document.querySelector('.playerOptions').removeChild(roundDisplay);
-  document.querySelector('.playerOptions').appendChild(finalDisplay);
+  document.querySelector('.playerOptions').replaceChild(finalDisplay, roundDisplay);
   if ((playerScore > computerScore) && (playerScore > tieScore)){
     finalDisplay.textContent = "Player Wins!"
   } else if ((computerScore > playerScore) && (computerScore > tieScore)){
