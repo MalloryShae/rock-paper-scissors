@@ -16,6 +16,7 @@ let computerPlay = function(){
 let playerScore = 0
 let computerScore = 0
 let tieScore = 0
+let rounds = 0
 
 
 let playRound = function(playerSelection, computerSelection){
@@ -52,8 +53,13 @@ buttons.forEach((button) => {
     scoreDisplay.textContent = "Player Wins: " + playerScore + " | Computer Wins: " +computerScore+ " | Ties: " + tieScore;
     document.querySelector('.playerOptions').appendChild(roundDisplay);
     document.querySelector('.playerOptions').appendChild(scoreDisplay);
+    rounds ++;
+    if (rounds === 5){
+      buttons.forEach((button) => {button.disabled = true});
+    };
   });
 });
+
 
 
 
