@@ -1,3 +1,12 @@
+function capitalize(string){
+  let lower = string.toLowerCase();
+  let first = lower.slice(0,1);
+  let upper = first.toUpperCase();
+  let rest = lower.slice(1);
+  let caps = upper+rest;
+  return caps;
+}
+
 let computerPlay = function(){
   let choices = ["rock", "paper", "scissors"];
   let choice = choices[Math.floor(Math.random() * choices.length)]
@@ -10,29 +19,30 @@ let tieScore = 0
 
 
 let playRound = function(playerSelection, computerSelection){
-  let winning = "You win! "+playerSelection+ " beats " +computerSelection+"!";
-  let losing = "You lose! " + computerSelection + " beats "+ playerSelection + "!";
+  let playerCaps = capitalize(playerSelection);
+  let computerCaps = capitalize(computerSelection);
+  let winning = "You win! "+playerCaps+ " beats " +computerSelection+"!";
+  let losing = "You lose! " + computerCaps + " beats "+ playerSelection + "!";
   let tie = "It's a tie!"
   if ((playerSelection === "rock" && computerSelection === "scissors") ||
       (playerSelection  === "scissors" && computerSelection === "paper") ||
       (playerSelection === "paper" && computerSelection === "rock")){
     playerScore = playerScore + 1;
-    console.log(winning);
+    roundDisplay.textContent = winning
   } else if (playerSelection  === computerSelection){
     tieScore = tieScore +1;
-    console.log(tie);
+    roundDisplay.textContent =tie;
   } else {
     computerScore = computerScore + 1;
-    console.log(losing);
+    roundDisplay.textContent=losing;
   }
 }
 
 let playerSelection = "";
 
 const buttons = document.querySelectorAll('button');
-
 const scoreDisplay = document.createElement('p');
-
+const roundDisplay = document.createElement('p');
 
 buttons.forEach((button) => {
   button.addEventListener('click', (e) => {
@@ -40,6 +50,7 @@ buttons.forEach((button) => {
     let computerSelection = computerPlay();
     playRound(playerSelection, computerSelection);
     scoreDisplay.textContent = "Player Wins: " + playerScore + " | Computer Wins: " +computerScore+ " | Ties: " + tieScore;
+    document.querySelector('.playerOptions').appendChild(roundDisplay);
     document.querySelector('.playerOptions').appendChild(scoreDisplay);
   });
 });
@@ -50,15 +61,6 @@ buttons.forEach((button) => {
 // Need to: store round info somewhere - number of rounds, who has wins, loses, draws ; display on page (not console), see if I can cap rounds, Make page look better
 
 
-// function capitalize(string){
-//   let lower = string.toLowerCase();
-//   let first = lower.slice(0,1);
-//   let upper = first.toUpperCase();
-//   let rest = lower.slice(1);
-//   let caps = upper+rest;
-//   return caps;
-// }
-//
 
 
 // // function game(){
