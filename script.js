@@ -58,21 +58,23 @@ buttons.forEach((button) => {
     if (playerScore === 5 || computerScore === 5){
       buttons.forEach((button) => {button.style.display = 'none'});
       selectText.style.display = 'none';
-      setTimeout(finalScore, 1500);
+      setTimeout(finalScore, 500);
     };
   });
 });
 
 
 function finalScore (){
-  document.querySelector('.playerOptions').replaceChild(finalDisplay, roundDisplay);
   if ((playerScore > computerScore) && (playerScore > tieScore)){
-    finalDisplay.textContent = "Player Wins!"
+    if (confirm("Player Wins!")){
+      window.location.reload()
+    }
   } else if ((computerScore > playerScore) && (computerScore > tieScore)){
-    finalDisplay.textContent = "Computer Wins!"
+    if(confirm("Computer Wins!")){
+      window.location.reload();
+    }
   }
 }
-
 
 // // function game(){
 // //   let rounds = 0
