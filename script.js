@@ -4,24 +4,10 @@ let computerPlay = function(){
   return choice;
 }
 
-let playerSelection = "";
-
-const buttons = document.querySelectorAll('button');
-
-buttons.forEach((button) => {
-  button.addEventListener('click', (e) => {
-    playerSelection = button.id;
-    let computerSelection = computerPlay();
-    playRound(playerSelection, computerSelection);
-  });
-});
-
-// Need to: store round info somewhere - number of rounds, who has wins, loses, draws ; display on page (not console), see if I can cap rounds, Make page look better
-
-
 let playerScore = 0
 let computerScore = 0
 let tieScore = 0
+
 
 let playRound = function(playerSelection, computerSelection){
   let winning = "You win! "+playerSelection+ " beats " +computerSelection+"!";
@@ -40,6 +26,28 @@ let playRound = function(playerSelection, computerSelection){
     console.log(losing);
   }
 }
+
+let playerSelection = "";
+
+const buttons = document.querySelectorAll('button');
+
+const scoreDisplay = document.createElement('p');
+
+
+buttons.forEach((button) => {
+  button.addEventListener('click', (e) => {
+    playerSelection = button.id;
+    let computerSelection = computerPlay();
+    playRound(playerSelection, computerSelection);
+    scoreDisplay.textContent = "Player Wins: " + playerScore + " | Computer Wins: " +computerScore+ " | Ties: " + tieScore;
+    document.querySelector('.playerOptions').appendChild(scoreDisplay);
+  });
+});
+
+
+
+
+// Need to: store round info somewhere - number of rounds, who has wins, loses, draws ; display on page (not console), see if I can cap rounds, Make page look better
 
 
 // function capitalize(string){
