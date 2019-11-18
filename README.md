@@ -1,3 +1,7 @@
 The Odin Project's Rock Paper Scissors Game
 
-Currently play functions only in Console
+Player vs Computer
+
+First to 5 wins!
+
+Make your selection by clicking the corresponding button.
