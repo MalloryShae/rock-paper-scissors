@@ -69,9 +69,9 @@ buttons.forEach((button) => {
 
 function finalScore (){
   if (playerScore > computerScore){
-    winner = "You win!";
+    winner = "You win! Play again?";
   } else if (computerScore > playerScore){
-    winner = "You lose!";
+    winner = "You lose! Play again?";
   };
   if (confirm(winner)){
     window.location.reload();
